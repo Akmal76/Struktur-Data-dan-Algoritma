@@ -38,7 +38,7 @@ public class Lab01 {
             else if (x[i] == 'A') {indexLetter[5][countLetter[5]] = i; countLetter[5]++;}
         }
 
-        // Mencari banyaknya kalimat SOVITA
+        // Mencari banyaknya kalimat SOFITA
         Arrays.fill(countLetter, 0);
         int countSovita = 0;
 

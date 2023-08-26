@@ -6,35 +6,18 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Lab01_23 {
+public class Lab00 {
     private static InputReader in;
     private static PrintWriter out;
 
-    public static int findMaxLength(String[] chars) {
-        int[] sumArray = new int [2 * chars.length + 1];
-        Arrays.fill(sumArray, Integer.MIN_VALUE);
+    static long calcMoney(int M, int[] H) {
+        long answer = 0;
 
-        sumArray[chars.length] = -1;
+        for (int i = 0; i < M; i++) answer += H[i];
 
-        int maxLength = 0 , count = 0;
-        
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i].equals("L")) count += 1;
-            else                               count -= 1;
-
-            int indeks = chars.length + count;
-            if (sumArray[indeks] >= -1) maxLength = Math.max(maxLength, i - sumArray[indeks]);
-            else                        sumArray[count + chars.length] = i;
-        }
-
-        return maxLength;
+        return answer;
     }
 
-    /*
-     * 0
-     * -5 -4 -3 -2 -1 0 1 2 3 4 5
-     *  ~  ~  ~  ~  ~ 0 0 ~ ~ ~ ~
-     */
 
     public static void main(String[] args) throws IOException {
         InputStream inputStream = System.in;
@@ -42,16 +25,16 @@ public class Lab01_23 {
         OutputStream outputStream = System.out;
         out = new PrintWriter(outputStream);
 
-        // Read value of N
-        int N = in.nextInt();
+        // Read value of M
+        int M = in.nextInt();
 
         // Read value of H
-        String[] H = new String[N];
-        for (int i = 0; i < N; ++i) {
-            H[i] = in.next();
+        int[] H = new int[M];
+        for (int i = 0; i < M; ++i) {
+            H[i] = in.nextInt();
         }
 
-        out.println(findMaxLength(H));
+        out.println(calcMoney(M, H));
 
         // don't forget to close/flush the output
         out.close();

@@ -20,9 +20,6 @@ public class Lab01 {
             else if (x[i] == 'A') freqLetter[5]++;
         }
 
-        // Kasus apabila salah satu dari keenam huruf tersebut tidak ada
-        if (freqLetter[0] == 0 || freqLetter[1] == 0 || freqLetter[2] == 0 || freqLetter[3] == 0 || freqLetter[4] == 0 || freqLetter[5] == 0) return N;
-
         // Simpan semua indeks untuk keenam huruf
         int[][] indexLetter = new int[6][N];
         int[]   countLetter = new int[6];

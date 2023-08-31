@@ -1,60 +1,31 @@
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Lab01 {
     private static InputReader in;
     private static PrintWriter out;
 
+    static boolean check (int x, int [] letterCount) {
+        // Cek apakah huruf S, O, F, I, T, A ini dibutuhkan atau tidak
+        for (int i = 0; i < x; i++) { if (letterCount[x] + 1 > letterCount[i]) return true; }
+        return false;
+    }
+
     static int getTotalDeletedLetters(int N, char[] x) {
-        // Hitung semua kemunculan huruf
-        int[] freqLetter = new int[6];
-        Arrays.fill(freqLetter, 0);
+        
+        int wordCount = 0; // Jumlah kata SOFITA yang dapat dibentuk
+        int [] letterCount = new int [6];
 
         for (int i = 0; i < N; i++) {
-            if      (x[i] == 'S') freqLetter[0]++;
-            else if (x[i] == 'O') freqLetter[1]++;
-            else if (x[i] == 'F') freqLetter[2]++;
-            else if (x[i] == 'I') freqLetter[3]++;
-            else if (x[i] == 'T') freqLetter[4]++;
-            else if (x[i] == 'A') freqLetter[5]++;
+            if      (x[i] == 'S') letterCount[0]++;
+            else if (x[i] == 'O' && !check(1, letterCount)) letterCount[1]++;
+            else if (x[i] == 'F' && !check(2, letterCount)) letterCount[2]++;
+            else if (x[i] == 'I' && !check(3, letterCount)) letterCount[3]++;
+            else if (x[i] == 'T' && !check(4, letterCount)) letterCount[4]++;
+            else if (x[i] == 'A' && !check(5, letterCount)) {letterCount[5]++; wordCount++;}
         }
 
-        // Simpan semua indeks untuk keenam huruf
-        int[][] indexLetter = new int[6][N];
-        int[]   countLetter = new int[6];
-
-        Arrays.fill(countLetter, 0);
-
-        for (int i = 0; i < N; i++) {
-            if      (x[i] == 'S') {indexLetter[0][countLetter[0]] = i; countLetter[0]++;}
-            else if (x[i] == 'O') {indexLetter[1][countLetter[1]] = i; countLetter[1]++;}
-            else if (x[i] == 'F') {indexLetter[2][countLetter[2]] = i; countLetter[2]++;}
-            else if (x[i] == 'I') {indexLetter[3][countLetter[3]] = i; countLetter[3]++;}
-            else if (x[i] == 'T') {indexLetter[4][countLetter[4]] = i; countLetter[4]++;}
-            else if (x[i] == 'A') {indexLetter[5][countLetter[5]] = i; countLetter[5]++;}
-        }
-
-        // Mencari banyaknya kalimat SOFITA
-        Arrays.fill(countLetter, 0);
-        int countSovita = 0;
-
-        while (countLetter[0] < freqLetter[0] && countLetter[1] < freqLetter[1] && countLetter[2] < freqLetter[2] && countLetter[3] < freqLetter[3] && countLetter[4] < freqLetter[4] && countLetter[5] < freqLetter[5]) {
-            if (indexLetter[0][countLetter[0]] < indexLetter[1][countLetter[1]]) {
-                if (indexLetter[1][countLetter[1]] < indexLetter[2][countLetter[2]]) {
-                    if (indexLetter[2][countLetter[2]] < indexLetter[3][countLetter[3]]) {
-                        if (indexLetter[3][countLetter[3]] < indexLetter[4][countLetter[4]]) {
-                            if (indexLetter[4][countLetter[4]] < indexLetter[5][countLetter[5]]) {
-                                countSovita++;
-                                countLetter[0]++; countLetter[1]++; countLetter[2]++; countLetter[3]++; countLetter[4]++; countLetter[5]++; 
-                            } else countLetter[5]++;
-                        } else countLetter[4]++;
-                    } else countLetter[3]++;
-                } else countLetter[2]++;
-            } else countLetter[1]++;
-        }
-
-        return N - countSovita * 6;
+        return N - wordCount * 6;
     }
 
     // Fungsi utama berjalannya program

@@ -20,10 +20,13 @@ public class Lab2 {
 
                 maxSum = Math.max(maxSum, nowSum);
 
-            } else nowSum = Long.MIN_VALUE; // Bilangan ini diskip, langsung aja buat nowSum negatif supaya ga diambil di kasus atas
+            } else nowSum = Long.MIN_VALUE; // Bilangan ini diskip, langsung aja buat nowSum negatif
         }
 
         if (maxSum == Long.MIN_VALUE) return 0;
+        // Kalau ini terpenuhi artinya nilai maxSum diatas gak terupdate artinya tidak ada yang memenuhi syarat
+        // Panjang array genap tapi isinya bilangan ganjil semua atau sebaliknya
+        
         return maxSum;
     }
 

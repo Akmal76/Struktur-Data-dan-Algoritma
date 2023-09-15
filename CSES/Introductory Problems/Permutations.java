@@ -14,6 +14,6 @@ public class Permutations {
             for (int i = 1; i <= n; i += 2) out.print(i + " ");
         }
 
-        out.close();
+        sc.close();
     }
 }

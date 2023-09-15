@@ -19,5 +19,7 @@ public class Repetitions {
         if (count > result) result = count;
 
         System.out.println(result + 1);
+
+        sc.close();
     }
 }

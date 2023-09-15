@@ -12,5 +12,7 @@ public class P_22_A_Pecahan {
         if (a * d == b * c)     System.out.println("sama");
         else if (a * d > b * c) System.out.println("lebih besar");
         else                    System.out.println("lebih kecil");
+
+        sc.close();
     }
 }

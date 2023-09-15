@@ -18,5 +18,7 @@ public class IncreasingArray {
         }
 
         System.out.println(result);
+
+        sc.close();
     }
 }

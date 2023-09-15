@@ -23,6 +23,8 @@ public class BalikDaftar {
         while (sc.hasNextInt()) num.add(sc.nextInt(0));
         
         for (int i = num.size()-1; i >= 0; i--) System.out.println(num.get(i));
+
+        sc.close();
     }
 
     static class InputReader {

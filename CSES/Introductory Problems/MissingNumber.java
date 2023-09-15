@@ -12,5 +12,7 @@ public class MissingNumber {
         while(n-- > 1) temp += sc.nextInt();
 
         System.out.println(Math.abs(sum - temp));
+
+        sc.close();
     }
 }

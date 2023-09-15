@@ -25,33 +25,37 @@ public class Lab3 {
 
     // Metode GA
     static String GA() {
-        //TODO: Implement this method
-        kanan = !kanan;
+        kanan = !kanan;                 // Invert nilai kanan
         if (kanan) return "KANAN";
         return "KIRI";
     }
 
     // Metode S
     static long S(int Si){
-        //TODO: Implement this method
-        if (gedung.isEmpty()) return -1;
+        // Daripada menggeser SOFITA, mending menggeser gedungnya
+
+        if (gedung.isEmpty()) return -1;    // Kalau semua gedung sudah hancur
  
-        lantai = gedung.getFirst();
+        lantai = gedung.getFirst();         // Gedung yang sedang dikunjungi (paling kiri)
 
         long sum = 0;
 
-        while (Si-- > 0 && !lantai.isEmpty()) {
+        while (Si-- > 0 && !lantai.isEmpty()) {  // Ambil sebanyak Si lantai jika gedung belum hancur
             int temp = lantai.poll();
             T -= temp;
             sum += temp;
         }
         
-        if (kanan) {
-            if (gedung.peekFirst() != null) gedung.addLast  (gedung.pollFirst());
+        if (kanan) {    // Arah ke kanan
+            // Jika gedung lain tidak hancur, geser semua gedung ke kiri
+            if (gedung.peekFirst() != null) gedung.addLast (gedung.pollFirst());
+            // Jika gedung sekarang hancur, keluarkan dari Deque
             if (lantai.isEmpty()) gedung.pollLast();
         }
-        else {
+        else {          // Arah ke kiri
+            // Jika gedung sekarang hancur, keluarkan dari Deque
             if (lantai.isEmpty()) gedung.pollFirst();
+            // Jika gedung lain tidak hancur, geser semua gedung ke kanan
             if (gedung.peekLast() != null) gedung.addFirst (gedung.pollLast());
         }
 

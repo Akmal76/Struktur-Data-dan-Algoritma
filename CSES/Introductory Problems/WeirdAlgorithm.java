@@ -12,5 +12,7 @@ public class WeirdAlgorithm {
             else n = 3*n + 1;
         }
         System.out.println(1);
+
+        sc.close();
     }
 }

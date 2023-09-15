@@ -1,7 +1,13 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayDeque;
+import java.util.StringTokenizer;
 
-public class Lab3{
+public class Lab3 {
     private static InputReader in;
     private static PrintWriter out;
 
@@ -13,43 +19,41 @@ public class Lab3{
     private static String perintah;
 
     private static boolean kanan = true;
-    private static boolean menang = false;
 
-    private static LinkedList <Integer> lantai = new LinkedList<>();
-    private static LinkedList <LinkedList <Integer>> gedung = new LinkedList<>();
+    private static ArrayDeque <Integer> lantai = new ArrayDeque<>();
+    private static ArrayDeque <ArrayDeque <Integer>> gedung = new ArrayDeque<>();
 
     // Metode GA
     static String GA() {
         //TODO: Implement this method
-        if (kanan) { 
-            kanan = false; 
-            return "KIRI"; 
-        }
-        
-        kanan = true; return "KANAN";
+        kanan = !kanan;
+        if (kanan) return "KANAN";
+        return "KIRI";
     }
 
     // Metode S
     static long S(int Si){
         //TODO: Implement this method
-        if (menang) return Long.MIN_VALUE;
-        if (gedung.isEmpty()) return Long.MIN_VALUE;
-        if (gedung.getFirst() == null) return Long.MIN_VALUE;
+        if (gedung.isEmpty()) return -1;
  
         lantai = gedung.getFirst();
 
         long sum = 0;
 
         while (Si-- > 0 && !lantai.isEmpty()) {
-            long temp = lantai.pop();
+            int temp = lantai.poll();
             T -= temp;
             sum += temp;
         }
-
-        if  (kanan) gedung.addLast(gedung.pollFirst());
-        else        gedung.addFirst(gedung.pollLast());
-
-        if (lantai.isEmpty()) gedung.remove(lantai);
+        
+        if (kanan) {
+            if (gedung.peekFirst() != null) gedung.addLast  (gedung.pollFirst());
+            if (lantai.isEmpty()) gedung.pollLast();
+        }
+        else {
+            if (lantai.isEmpty()) gedung.pollFirst();
+            if (gedung.peekLast() != null) gedung.addFirst (gedung.pollLast());
+        }
 
         return sum;
     }
@@ -68,9 +72,8 @@ public class Lab3{
         Q = in.nextInt();
 
         for (int i = 0; i < X; i++) {
-
             // Insert into ADT
-            lantai = new LinkedList<>();
+            lantai = new ArrayDeque<>();
             for (int j = 0; j < C; j++) {
                 Ci = in.nextInt();
                 lantai.add(Ci);
@@ -87,7 +90,7 @@ public class Lab3{
                 int Si = in.nextInt();
                 long tempSi = S(Si);
 
-                if (T <= 0 || tempSi == Long.MIN_VALUE || gedung.isEmpty()) out.println("MENANG");
+                if (T <= 0 || gedung.isEmpty()) out.println("MENANG");
                 else out.println(tempSi);
             }
         }

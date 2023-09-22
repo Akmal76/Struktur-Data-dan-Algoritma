@@ -1,26 +1,33 @@
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.StringTokenizer;
 
-public class BurungBeo {
-
+public class Lab0 {
     private static InputReader in;
-    static PrintWriter out;
+    private static PrintWriter out;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static int multiplyMod(int N, int Mod, int[] x) {
+        long ans = x[0];
+        for (int i = 1; i < N; i++) ans = (ans * x[i]) % Mod;
+        return (int) ans;
+    }
 
+    public static void main(String[] args) throws IOException {
         InputStream inputStream = System.in;
         in = new InputReader(inputStream);
         OutputStream outputStream = System.out;
         out = new PrintWriter(outputStream);
 
-        String kalimat = sc.nextLine();
-        out.println(kalimat);
+        // Read value of N
+        int N = in.nextInt();
+
+        // Read value of x
+        int[] x = new int[N];
+        for (int i = 0; i < N; ++i) {
+            x[i] = in.nextInt();
+        }
+
+        int ans = multiplyMod(N, (int) (1e9+7), x);
+        out.println(ans);
 
         out.close();
     }
@@ -48,5 +55,6 @@ public class BurungBeo {
         public int nextInt() {
             return Integer.parseInt(next());
         }
+
     }
 }

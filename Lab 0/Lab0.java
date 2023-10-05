@@ -6,8 +6,12 @@ public class Lab0 {
     private static PrintWriter out;
 
     static int multiplyMod(int N, int Mod, int[] x) {
+        // Simpan bilangan pertama
         long ans = x[0];
+
+        // Sifat modulo yaitu (A * B) % C = ((A % C) * (B % C)) % C
         for (int i = 1; i < N; i++) ans = (ans * x[i]) % Mod;
+
         return (int) ans;
     }
 

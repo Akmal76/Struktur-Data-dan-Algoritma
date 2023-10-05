@@ -11,6 +11,14 @@ public class Lab1 {
     private static PrintWriter out;
 
     public static long sumToN(long N) {
+        /*
+         * Untuk bilangan N yang sangat besar,
+         * komputasi N(N+1)/2 menghasilkan bilangan yang amat besar sehingga overflow.
+         * 
+         * Maka perlu kita lakukan pembagian dengan 2 terlebih dahulu
+         * dibanding perkalian N(N+1) terlebih dahulu
+         */
+
         if (N % 2 == 0) return (N / 2) * (N + 1);
         return ((N+1) / 2) * N;
     }

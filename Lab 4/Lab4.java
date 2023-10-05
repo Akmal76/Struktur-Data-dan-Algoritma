@@ -12,7 +12,6 @@ public class Lab4 {
 
     private static int memo[][];
 
-    // TODO: implement this method
     static int deteksiDNA(int M, int N, String X, String Y) {
         if (M < 0 || N < 0) return 0;
         if (memo[M][N] == -1) {
@@ -40,7 +39,6 @@ public class Lab4 {
 
             memo = new int[M][N];
             
-            // TODO: implement method deteksiDNA(M, N, S1, S2) to get answer
             for (int i = 0; i < M; i++) for (int j = 0; j < N; j++) memo[i][j] = -1;
 
             int ans = deteksiDNA(M-1, N-1, S1, S2);

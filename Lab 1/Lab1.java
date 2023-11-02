@@ -12,13 +12,10 @@ public class Lab1 {
 
     public static long sumToN(long N) {
         /*
-         * Untuk bilangan N yang sangat besar,
-         * komputasi N(N+1)/2 menghasilkan bilangan yang amat besar sehingga overflow.
-         * 
-         * Maka perlu kita lakukan pembagian dengan 2 terlebih dahulu
-         * dibanding perkalian N(N+1) terlebih dahulu
+         * Untuk bilangan N yang sangat besar, komputasi N(N+1)/2 menghasilkan bilangan yang amat besar sehingga overflow.
+         * Maka perlu kita lakukan pembagian dengan 2 terlebih dahulu dibanding perkalian N(N+1) terlebih dahulu.
+         * Cek mana yang genap, N atau (N+1). Yang genap dibagi 2 terlebih dahulu.
          */
-
         if (N % 2 == 0) return (N / 2) * (N + 1);
         return ((N+1) / 2) * N;
     }
@@ -33,14 +30,7 @@ public class Lab1 {
         int T = in.nextInt();
 
         // Run T test case
-        while (T-- > 0) {
-            // Read value of N
-            long N;
-            N = in.nextLong();
-            long ans = sumToN(N);
-            out.println(ans);
-        }
-
+        while (T-- > 0) { out.println(sumToN(in.nextLong())); }
         out.close();
     }
 
@@ -64,13 +54,7 @@ public class Lab1 {
             return tokenizer.nextToken();
         }
 
-        public int nextInt() {
-            return Integer.parseInt(next());
-        }
-
-        public long nextLong() {
-            return Long.parseLong(next());
-        }
-
+        public int nextInt()    { return Integer.parseInt(next()); }
+        public long nextLong()  { return Long.parseLong(next()); }
     }
 }

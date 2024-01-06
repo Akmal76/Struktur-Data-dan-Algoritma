@@ -10,3 +10,4 @@ Lab dikerjakan secara luring dengan durasi pengerjaan selama dua jam.
 | [3](Lab%203/Lab%203%20-%20Soal.pdf) | [ADT](Lab%203/Lab3.java) |
 | [4](Lab%204/Lab%204%20-%20Soal.pdf) | [Rekursif](Lab%204/Lab4.java) |
 | [5](Lab%205/Lab%205%20-%20Soal.pdf) | [Linked List](Lab%205/Lab5.java) |
+| [6](Lab%206/Lab%206%20-%20Soal.pdf) | [AVL Tree](Lab%206/Lab6.java) |

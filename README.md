@@ -11,3 +11,4 @@ Lab dikerjakan secara luring dengan durasi pengerjaan selama dua jam.
 | [4](Lab%204/Lab%204%20-%20Soal.pdf) | [Rekursif](Lab%204/Lab4.java) |
 | [5](Lab%205/Lab%205%20-%20Soal.pdf) | [Linked List](Lab%205/Lab5.java) |
 | [6](Lab%206/Lab%206%20-%20Soal.pdf) | [AVL Tree](Lab%206/Lab6.java) |
+| [7](Lab%207/Lab%207%20-%20Soal.pdf) | [Binary Heap]() |

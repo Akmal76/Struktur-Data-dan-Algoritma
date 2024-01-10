@@ -1,6 +1,6 @@
 # Stuktur Data dan Algoritma 2023-2024 Gasal						
 
-## Lab SDA
+## Lab SDA 23-24
 Lab dikerjakan secara luring dengan durasi pengerjaan selama dua jam.
 | Lab | Solusi |
 |--|--|
